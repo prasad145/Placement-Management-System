@@ -3,15 +3,21 @@ import xlrd
 
 app = Flask(__name__)
 
-@app.route('/home')
+@app.route("/")
+def m():
+    return redirect('/login')
 
+@app.route('/home')
 def home():
-    return (render_template('home.html'))
+    return (render_template('login.html'))
+
 @app.route('/admin_home')
 def admin_home():
     return render_template('admin_home.html')
 
 @app.route('/login', methods = ['GET','POST'])
+def logi():
+    return render_template('login.html')
 
 def login():
     error = None
