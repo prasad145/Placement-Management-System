@@ -32,8 +32,8 @@ def logi():
         #            ADD secretkey varchar(40) WHERE usn = :usn""",{"usn" : id})
         #db.execute("""INSERT INTO students
           #            (secretkey) values(:secretkey)""",{"secretkey" : secure_pass})
-        usernamedata = db.execute("SELECT usn FROM students where usn = :usn",{"usn" : id}).fetchone()   
-        passworddata = db.execute("SELECT usn from students where first_name = :first_name",{"first_name" : password}).fetchone()
+        usernamedata = db.execute("SELECT usn FROM student where usn = :usn",{"usn" : id}).fetchone()   
+        passworddata = db.execute("SELECT usn from student where first_name = :first_name",{"first_name" : password}).fetchone()
 
         if usernamedata is None:
             #put flash messege here
