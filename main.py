@@ -12,12 +12,16 @@ def home():
     return (render_template('login.html'))
 
 @app.route('/admin_home')
-def admin_home():
+def adminHome():
     return render_template('admin_home.html')
 
 @app.route('/login', methods = ['GET','POST'])
-def logi():
+def studentLogin():
     return render_template('login.html')
+
+@app.route('/adminlogin')
+def adminLogin():
+    return (render_template('login_admin.html'))
 
 def login():
     error = None

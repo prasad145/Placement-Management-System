@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Placement Log-in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <script></script>
+    <style>
+      body{
+        height: 100%;
+        background-color: cadetblue;
+        display: flex;
+        align-items: stretch;
+        margin: 0;
+      }
+
+      .container-block {
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+      }
+      .title-board {
+        width: 60%;
+        height: 100vh;
+        background-color:deepskyblue;
+        display: inline-block;
+      }
+
+      .title-board .content {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 20px;
+      }
+
+
+      .title-board .content h3 {
+        /* display: block; */
+        margin-left: 20px;
+      }
+
+      .form-block {
+        width: 40%;
+        height: 100vh;
+        background-color: honeydew;
+        display: flex;
+        float: right;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .form-block .header {
+        display: none;
+        padding: 20px;
+        padding-left: 40px;
+        width: 100%;
+        background-color: deepskyblue;
+      }
+
+
+      .student-form {
+        margin-left: 20px;
+        max-width: 300px;
+        justify-self: center;
+        align-self: center;
+        padding: 20px;
+      }
+
+      .student-form * {
+        display: block;
+        margin: 10px 0px;
+      }
+
+      .student-form a {
+        float: right;
+        color:teal;
+        text-decoration: none;
+      }
+
+      .form-block input {
+        background-color: transparent;
+        height: 30px;
+        font-size: medium;
+        color: black;
+        border: 0px;
+        border-bottom: 3px solid black;
+        margin-bottom: 20px;
+      }
+
+      #student-btn, #admin-btn {
+        width: 40vw;
+        margin: 0;
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        display: block;
+      }
+
+       
+      @media (max-width: 730px){
+        .form-block{
+          width: 100vw;
+        }
+        .title-board {
+          display: none;
+        }
+        .form-block .header {
+        display: inline-block;
+      }
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container-block">
+      <div class="title-board">
+        <div class="content">
+          <div class="names">
+            <h1>Placement Managment</h1>
+            <h2>A project by:</h2>
+            <h3>N</h3>
+            <h3>N</h3>
+            <h3>N</h3>
+            <h3>P</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <h1 class="header">Placement Managment</h1>
+        <form  class="student-form ">
+          <h3 style="margin-bottom: 20px;"><u>Admin Login</u></h3>
+          <input id="USN" type="text" placeholder="Username">
+          <input id="PW" type="password" placeholder="Password">
+          <button type="submit">Log in</button>
+          <a href="/login">Log in as student</a>
+        </form>
+      </div>
+    </div>
+  </body>
+  </html>
+
+
+
+
