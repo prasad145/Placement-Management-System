@@ -54,28 +54,6 @@ def logi():
         db.commit()          
     
 
-
-"""
-im no longer verifying the user credential through this
->>>>>>> c5352dc12c0012b958ea1dd90df1dc1f80cf0b86
-
-@app.route('/adminlogin')
-def adminLogin():
-    return (render_template('login_admin.html'))
-
-def login():
-    error = None
-    if request.method == 'POST':
-        if (request.form['username'] != 'admin' and request.form['username'] != 'student') or request.form['password'] != 'admin' :
-            error = "Invalid credentials, Please try again!."
-        elif request.form['username'] == 'admin':
-            return redirect(url_for('admin_home'))
-        elif request.form['username'] == 'student':
-            return redirect(url_for('home'))
-
-    return render_template('login.html', error = error)
-"""
-
 if __name__ == '__main__':
    # path = "data.xlsx"
    # cur = xlrd.open_workbook(path)
