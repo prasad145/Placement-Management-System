@@ -1,5 +1,12 @@
-from flask import Flask , render_template , redirect , url_for , request
-import xlrd
+from student_class import Student
+from flask import Flask , render_template , redirect , url_for , request , session
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+from passlib.hash import sha256_crypt
+
+engine = create_engine("sqlite:///std_data.db", echo = True)
+
+db = scoped_session(sessionmaker(bind = engine))
 
 app = Flask(__name__)
 
@@ -17,23 +24,48 @@ def admin_home():
 
 @app.route('/login', methods = ['GET','POST'])
 def logi():
-    return render_template('login.html')
+    if request.method == 'POST':
+        id =  str(input())                     #request.form.get("id")
+        password = str(input())                 #request.form.get("password")
+        secure_pass = sha256_crypt.encrypt(str(password))
+        db.execute("""ALTER TABLE students 
+                     ADD secretkey varchar(40)""")
+        db.execute("""INSERT INTO students
+                      (secretkey) values(:secretkey)""",{"secretkey" : secure_pass})
+        usernamedata = db.execute("SELECT usn FROM students where usn = :usn",{"usn" : id}).fetchone()   
+        passworddata = db.execute("SELECT secretkey from students where usn = :usn",{"usn" : id}).fetchone()
+
+        if usernamedata is None:
+            #put flash messege here
+            return render_template("login.html")
+        else: 
+            for password_data in passworddata:
+                if sha256_crypt.verify(password, password_data):
+                    #put flash messege here ("login successfull")
+                    return redirect(url_for('register'))
+                else:
+                    #put flash messege ("incorrect password")
+                    return render_template("login.html")
+
+        db.commit()          
+    
+
+
+"""
+im no longer verifying the user credential through this
 
 def login():
     error = None
-    admin_authorised = False
-    student_authorised = False
     if request.method == 'POST':
         if (request.form['username'] != 'admin' and request.form['username'] != 'student') or request.form['password'] != 'admin' :
             error = "Invalid credentials, Please try again!."
         elif request.form['username'] == 'admin':
-            admin_authorised = True
             return redirect(url_for('admin_home'))
         elif request.form['username'] == 'student':
-            student_authorised = True
             return redirect(url_for('home'))
 
     return render_template('login.html', error = error)
+"""
 
 if __name__ == '__main__':
    # path = "data.xlsx"
@@ -41,5 +73,5 @@ if __name__ == '__main__':
    
    # first_sheet = cur.sheet_by_index(0)
    # print(first_sheet.row_values(0))
-
+    app.secret_key = "#weareallnerds69"
     app.run(debug = True)
