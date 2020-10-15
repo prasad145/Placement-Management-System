@@ -1,6 +1,6 @@
 import sqlite3
 from student_class import Student
-connection = sqlite3.connect(':memory:')
+connection = sqlite3.connect('std_data.db')
 
 cur = connection.cursor()
 
