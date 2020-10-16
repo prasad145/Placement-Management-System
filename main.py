@@ -1,18 +1,12 @@
-from student_class import Student
 import sqlite3
 from flask import Flask , render_template , redirect , url_for , request , session
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
-from passlib.hash import sha256_crypt
-
-#engine = create_engine("sqlite:///data.db", echo = True)
-
-#db = scoped_session(sessionmaker(bind = engine))
-
-db = sqlite3.connect('data.db')
-cur = db.cursor()
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+
+#db = SQLAlchemy(app)
 
 
 @app.route("/")
@@ -29,36 +23,25 @@ def admin_home():
 
 @app.route('/login', methods = ['GET','POST'])
 def logi():
-    if request.method == 'POST':
-        id = request.form.get("USN")
-        password = request.form.get("PW")
+    if request.method == 'POST':      
+        id = request.form['USN']
+        password = request.form['PW']
+      #  credentials = studentDB.query.get(id)
+        with sqlite3.connect("data.db") as con:
+            cur = con.cursor()
+            cred = cur.execute("SELECT * FROM studentDB where usn = :usn", {"usn" : id}).fetchone() 
         
-        usernamedata = cur.execute("SELECT * FROM studentDB where usn = :usn",{"usn" : id}).fetchone()
-        if usernamedata is None:
-            return render_template('login.html')
-        else:
-            if usernamedata[2] == password:
+            if cred is None:
+                return render_template('login.html')
+            else:
+                if cred[2] == password:
                 #comapny database
-                return render_template('home.html')
-            else:
+                    return render_template('home.html')
+                else:
+                    return render_template('login.html')
 
-        #passworddata = cur.execute("SELECT usn from studentDB where fname = :fname",{"fname" : password}).fetchone()
-
-        if usernamedata is None:
-            #put flash messege here
-            return render_template("login.html")
-        else:
-            if passworddata is not None: 
-            #for password_data in passworddata:
-             #   if sha256_crypt.verify(password, password_data):
-                    #put flash messege here ("login successfull")
-                return redirect(url_for('register'))
-            else:
-                #put flash messege ("incorrect password")
     else:
         return render_template("login.html")
-
-                 
 
 if __name__ == '__main__':
     app.secret_key = "#weareallnerds69"
