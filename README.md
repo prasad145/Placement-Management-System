@@ -2,6 +2,6 @@
 <!DOCTYPE html>
 <html>
   <body>
-  <img src="sample.jpg" alt="My cool logo"/>
+  <img src="sample.png" alt="My cool logo"/>
   </body>
  </html>
