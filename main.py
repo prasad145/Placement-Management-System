@@ -37,24 +37,12 @@ def logi():
         if usernamedata is None:
             return render_template('login.html')
         else:
-            if usernamedata[2] == password:
-                #comapny database
+            if (usernamedata[2] == password):
                 return render_template('home.html')
             else:
+                pass
+        # passworddata = cur.execute("SELECT usn from studentDB where fname = :fname",{"fname" : password}).fetchone()
 
-        #passworddata = cur.execute("SELECT usn from studentDB where fname = :fname",{"fname" : password}).fetchone()
-
-        if usernamedata is None:
-            #put flash messege here
-            return render_template("login.html")
-        else:
-            if passworddata is not None: 
-            #for password_data in passworddata:
-             #   if sha256_crypt.verify(password, password_data):
-                    #put flash messege here ("login successfull")
-                return redirect(url_for('register'))
-            else:
-                #put flash messege ("incorrect password")
     else:
         return render_template("login.html")
 
