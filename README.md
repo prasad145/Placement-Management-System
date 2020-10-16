@@ -1,2 +1,7 @@
-# Placement-Management-System
-here we go
+
+<!DOCTYPE html>
+<html>
+  <body>
+  <img src="sample.jgp" alt="My cool logo"/>
+  </body>
+ </html>
