@@ -33,8 +33,16 @@ def logi():
         id = request.form.get("USN")
         password = request.form.get("PW")
         
-        usernamedata = cur.execute("SELECT usn FROM studentDB where usn = :usn",{"usn" : id}).fetchone()   
-        passworddata = cur.execute("SELECT usn from studentDB where fname = :fname",{"fname" : password}).fetchone()
+        usernamedata = cur.execute("SELECT * FROM studentDB where usn = :usn",{"usn" : id}).fetchone()
+        if usernamedata is None:
+            return render_template('login.html')
+        else:
+            if usernamedata[2] == password:
+                #comapny database
+                return render_template('home.html')
+            else:
+
+        #passworddata = cur.execute("SELECT usn from studentDB where fname = :fname",{"fname" : password}).fetchone()
 
         if usernamedata is None:
             #put flash messege here
@@ -47,9 +55,10 @@ def logi():
                 return redirect(url_for('register'))
             else:
                 #put flash messege ("incorrect password")
-                return render_template("login.html")
+    else:
+        return render_template("login.html")
 
-        db.commit()         
+                 
 
 if __name__ == '__main__':
     app.secret_key = "#weareallnerds69"
