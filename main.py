@@ -19,9 +19,21 @@ def home():
     global cred
     return (render_template('home.html', data = cred))
 
-@app.route('/admin_home')
+@app.route('/admin_home', methods = ['GET', 'POST'])
 def admin_home():
-    return render_template('admin_home.html')
+    global cred
+    if request.method == 'POST':
+        name = request.form['NAME']
+        ctc = request.form['CTC']
+        role = request.form['ROLE']
+        cgpa = request.form['CGPA']
+        backs = request.form['BACKS']
+        with sqlite3.connect("data.db") as conn:
+            curr = conn.cursor()
+            curr.execute("INSERT INTO companyDB(company_name, CTC, offered_Role, CGPA, backs) values( company_name =:company_name, CTC =: CTC, offered_Role =: offered_role, CGPA =:CGPA, backs =: backs",{"company_name" : name, "CTC" : ctc, "offered_Role" : role, "CGPA" : cgpa, "backs" : backs})
+            conn.commit()
+    else:    
+        return render_template('admin_home.html')
 
 @app.route('/login', methods = ['GET','POST'])
 def logi():
