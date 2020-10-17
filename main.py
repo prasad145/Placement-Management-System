@@ -2,6 +2,7 @@ import sqlite3
 from flask import Flask , render_template , redirect , url_for , request , session
 from flask_sqlalchemy import SQLAlchemy
 
+cred = []
 app = Flask(__name__)
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -15,7 +16,8 @@ def m():
 
 @app.route('/home')
 def home():
-    return (render_template('home.html'))
+    global cred
+    return (render_template('home.html', data = cred))
 
 @app.route('/admin_home')
 def admin_home():
@@ -23,6 +25,7 @@ def admin_home():
 
 @app.route('/login', methods = ['GET','POST'])
 def logi():
+    global cred
     if request.method == 'POST':      
         id = request.form['USN']
         password = request.form['PW']
@@ -37,7 +40,7 @@ def logi():
                 if cred[2] == password:
                     return redirect('/home')
                 else:
-                    return render_template('login.html')
+                    return render_template('login.html',)
 
     else:
         return render_template("login.html")
