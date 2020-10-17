@@ -1,13 +1,8 @@
 import sqlite3
-from flask import Flask , render_template , redirect , url_for , request , session
+from flask import Flask , render_template , redirect , url_for , request , session, flash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-
-#db = SQLAlchemy(app)
-
 
 @app.route("/")
 def m():
@@ -32,15 +27,19 @@ def logi():
             cred = cur.execute("SELECT * FROM studentDB where usn = :usn", {"usn" : id}).fetchone() 
         
             if cred is None:
+                flash("Incorrect, Password!!!")
                 return render_template('login.html')
             else:
                 if cred[2] == password:
-                #comapny database
+                    #comapny database
+                    flash("Incorrect, Password!!!")
                     return render_template('home.html')
                 else:
+                    flash("Incorrect, Password!!!")
                     return render_template('login.html')
 
     else:
+        flash("Incorrect, Password!!!")
         return render_template("login.html")
 
 if __name__ == '__main__':
