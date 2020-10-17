@@ -40,10 +40,16 @@ def logi():
                 if cred[2] == password:
                     return redirect('/home')
                 else:
+                    flash('Wrong')
                     return render_template('login.html',)
 
     else:
         return render_template("login.html")
+
+@app.route('/company/<int:companyID>')
+def dispCompany(companyID):
+    companyData = None
+    return render_template('company.html', data = companyData)
 
 if __name__ == '__main__':
     app.secret_key = "#weareallnerds69"
