@@ -15,7 +15,7 @@ def m():
 
 @app.route('/home')
 def home():
-    return (render_template('login.html'))
+    return (render_template('home.html'))
 
 @app.route('/admin_home')
 def admin_home():
@@ -35,8 +35,7 @@ def logi():
                 return render_template('login.html')
             else:
                 if cred[2] == password:
-                #comapny database
-                    return render_template('home.html')
+                    return redirect('/home')
                 else:
                     return render_template('login.html')
 
