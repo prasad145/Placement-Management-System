@@ -83,7 +83,10 @@ def addnew():
 
 @app.route('/drop/<int:companyID>')
 def drop(companyID):
-    # drop from DB
+    with sqlite3.connect("companyDB.db") as conn:
+        curr = conn.cursor()
+        curr.execute("DELETE FROM companies WHERE ID = :del", { "del" : companyID })
+        conn.commit()
     return redirect('/admin')
 
 if __name__ == '__main__':
