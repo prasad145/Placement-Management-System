@@ -22,21 +22,12 @@ def home():
         c_data = curr.execute('SELECT * FROM companies;').fetchall()
     return (render_template('home.html', data = cred, companies = c_data))
 
-@app.route('/admin_home', methods = ['GET', 'POST'])
+@app.route('/admin', methods = ['GET', 'POST'])
 def admin_home():
-    global cred
-    if request.method == 'POST':
-        name = request.form['NAME']
-        ctc = request.form['CTC']
-        role = request.form['ROLE']
-        cgpa = request.form['CGPA']
-        backs = request.form['BACKS']
-        with sqlite3.connect("data.db") as conn:
-            curr = conn.cursor()
-            curr.execute("INSERT INTO companyDB(company_name, CTC, offered_Role, CGPA, backs) values( company_name =:company_name, CTC =: CTC, offered_Role =: offered_role, CGPA =:CGPA, backs =: backs",{"company_name" : name, "CTC" : ctc, "offered_Role" : role, "CGPA" : cgpa, "backs" : backs})
-            conn.commit()
-    else:    
-        return render_template('admin_home.html')
+    with sqlite3.connect("companyDB.db") as conn:
+        curr = conn.cursor()
+        c_data = curr.execute('SELECT * FROM companies;').fetchall()
+    return render_template('admin_home.html', companies = c_data)
 
 @app.route('/login', methods = ['GET','POST'])
 def logi():
@@ -63,7 +54,16 @@ def logi():
 
 @app.route('/adminlogin', methods = ['GET', 'POST'])
 def adminLogin():
-    return render_template('login_admin.html')
+    if request.method == 'POST':
+        name = request.form["username"]
+        pw = request.form['pw']
+        print(name, pw)
+        if(name == 'admin' and pw == 'admin'):
+            return redirect('/admin')
+        else:
+            return render_template('login_admin.html', invalid = False)
+    else:
+        return render_template('login_admin.html', invalid = True)
 
 
 @app.route('/company/<int:companyID>')
@@ -73,6 +73,18 @@ def dispCompany(companyID):
         q = "SELECT * FROM companies where ID=" + str(companyID) + ";"
         companyData = curr.execute(q).fetchone()
     return render_template('company.html', data = companyData)
+
+@app.route('/new', methods = ['POST', 'GET'])
+def addnew():
+    if request.method == 'POST':
+        pass
+    else:
+        render_template('add_new.html')
+
+@app.route('/drop/<int:companyID>')
+def drop(companyID):
+    # drop from DB
+    return redirect('/admin')
 
 if __name__ == '__main__':
     app.secret_key = "#weareallnerds69"

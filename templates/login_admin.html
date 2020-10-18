@@ -4,7 +4,6 @@
     <title>Placement Log-in</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="static/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <script></script>
     <style>
       body{
         height: 100%;
@@ -90,7 +89,9 @@
 
       #invalid_msg {
         color: red;
+        {% if(invalid) %}
         display: none;
+        {% endif %}
       }
 
        
@@ -129,10 +130,10 @@
         <h1 class="header">Placement Managment</h1>
         <form  class="student-form" action="/adminlogin" method="POST">
           <h3 style="margin-bottom: 20px;"><u>Admin Login</u></h3>
-          <input id="userName" type="text" placeholder="Username" required>
-          <input id="PW" type="password" placeholder="Password" required>
+          <input id="userName" name="username" type="text" placeholder="Username" required>
+          <input id="PW" name="pw" type="password" placeholder="Password" required>
           <h5 id="invalid_msg">Invalid username or password!</h5>
-          <button id="login">Log in</button>
+          <button id="login_btn" type="submit">Log in</button>
           <a href="/login">Log in as student</a>
         </form>
       </div>

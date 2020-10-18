@@ -1,9 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>admin</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Placement Admin</title>
+	<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			/* justify-content: center; */
+			align-items: center;
+			/* margin: 0; */
+			overflow-x: hidden;
+		}
+
+		.header {
+			display: block;
+			width: 100%;
+			background-color: deepskyblue;
+			padding: 20px;
+			margin: 0%;
+			flex: 0 0 100%;
+		}
+
+		.heading {
+			margin: 10px 10px 10px 100px;
+			justify-self: center;
+		}
+
+		#username {
+			text-decoration: none;
+			color: black;
+			float: right;
+		}
+
+		#username:hover {
+			color: blue;
+		}
+
+
+		.content {
+			width: 100%;
+			max-width: 700px;
+			flex: 0 0 100%;
+		}
+
+		.new_container {
+			display: flex;
+			justify-content: center;
+			padding: 30px;
+			background-color:blanchedalmond;
+		}
+
+		#new_btn {
+			font-size: large;
+			background-color: deepskyblue;
+			color: black;
+			padding: 10px 25px;
+			border: none;
+			border-radius: 20px;
+		}
+
+		#new_btn:hover {
+			background-color: dodgerblue;
+		}
+
+		.line {
+			width: 100%;
+			border-bottom: 2px solid grey ;
+			margin: 5px 0px;
+		}
+
+		.company {
+			display: flex;
+			justify-content: space-between;
+			padding:20px;
+		}
+
+		.c_name {
+			margin: 0;
+		}
+	</style>
 </head>
 <body>
-	<h1> Companies for Registartion </h1> 
+	<div class="header">
+		<h1 class="heading">Placement Management</h1>
+		<a id="username" href="/login"><h3 id = "nametag">Admin</h3> Logout</a>
+	</div>
+	<div class="content">
+		<div class="new_container">
+			<a href="/new">
+				<button id="new_btn">Add new Offer</button>
+			</a>
+		</div>
+		<div class="line"></div>
+		<h3>Currently open for registration:</h3>
+		{% for c in companies %}
+		<div class="company">
+			<h3 class="c_name">{{c[1]}}</h3>
+			<a href="/drop/{{c[0]}}" onclick="return confirm('Are you sure you want to stop registration for {{c[1]}}?')">
+				<button>Remove</button>
+			</a>
+		</div>
+		<div class="line"></div>
+		{% endfor %}
+	</div>
 </body>
 </html>
