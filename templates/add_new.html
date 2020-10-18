@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New company</title>
+    <style>
+        body {
+			display: flex;
+			flex-direction: column;
+			/* justify-content: center; */
+			align-items: center;
+			/* margin: 0; */
+			overflow-x: hidden;
+		}
+
+		.header {
+			display: block;
+			width: 100%;
+			background-color: deepskyblue;
+			padding: 20px;
+			margin: 0%;
+			flex: 0 0 100%;
+		}
+
+		.heading {
+			margin: 10px 10px 10px 100px;
+			justify-self: center;
+		}
+
+		#username {
+			text-decoration: none;
+			color: black;
+			float: right;
+		}
+
+		#username:hover {
+			color: blue;
+		}
+
+
+		.content {
+			width: 100%;
+			max-width: 700px;
+			flex: 0 0 100%;
+		}
+
+        .inp {
+            display: block;
+            width: 90%;
+            margin-left: 20px;
+            border: none;
+            border-bottom: 3px solid black;
+            font-size: medium;
+            background-color: transparent;
+            height: 30px;
+            margin-bottom: 20px;
+            /* opacity: 0.2; */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+		<h1 class="heading">Placement Management</h1>
+		<a id="username" href="/login"><h3 id = "nametag">Admin</h3> Logout</a>
+	</div>
+	<div class="content">
+        <h3>Enter company information below:</h3>
+        <form class="new_form" action="/new" method="POST">
+            <input class="inp" type="text" name="name" placeholder="Company Name" required>
+            <input class="inp" type="text" name="role" placeholder="Role" required>
+            <input class="inp" type="number" name="CTC" placeholder="CTC offered" required>
+            <input class="inp" type="number" name="cgpa" placeholder="Minimum CGPA required" required>
+            <input class="inp" type="number" name="backs" placeholder="Maximum allowed backlogs" required>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

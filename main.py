@@ -79,7 +79,7 @@ def addnew():
     if request.method == 'POST':
         pass
     else:
-        render_template('add_new.html')
+        return render_template('add_new.html')
 
 @app.route('/drop/<int:companyID>')
 def drop(companyID):
