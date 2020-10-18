@@ -88,15 +88,10 @@
         margin-bottom: 20px;
       }
 
-      #student-btn, #admin-btn {
-        width: 40vw;
-        margin: 0;
-        border: none;
-        padding: 0;
-        border-radius: 0;
-        display: block;
+      #invalid_msg {
+        color: red;
+        display: none;
       }
-
        
       @media (max-width: 730px){
         .form-block{
@@ -135,6 +130,7 @@
           <h3 style="margin-bottom: 20px;"><u>Student Login</u></h3>
           <input id="USN" name="USN" type="text" placeholder="USN" minlength="11" required>
           <input id="PW" name="PW" type="password" placeholder="Password" required>
+          <h5 id="invalid_msg">Invalid username or password!</h5>
           <button type="submit">Log in</button>
           <a href="/adminlogin">Log in as admin</a>
         </form>

@@ -4,8 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company name</title>
+    <style>
+        body {
+			display: flex;
+			flex-direction: column;
+			/* justify-content: center; */
+			align-items: center;
+			/* margin: 0; */
+			overflow-x: hidden;
+		}
+
+		.header {
+			display: block;
+			width: 100%;
+			background-color: deepskyblue;
+			padding: 20px 10px;
+			margin: 0%;
+			flex: 0 0 100%;
+		}
+
+		.heading {
+			margin: 10px 10px;
+			/* padding: 0; */
+		}
+
+		#username {
+			text-decoration: none;
+			color: black;
+			float: right;
+		}
+
+		#username:hover {
+			color: blue;
+		}
+
+
+		.content {
+			width: 100%;
+			max-width: 700px;
+			flex: 0 0 100%;
+		}
+
+        .c_info {
+            font-size: large;
+            margin: 10px 20px;
+        }
+
+        #reg_btn {
+            margin-top: 30px;
+            margin-left: 35%;
+            padding: 10px 20px;
+            background-color: deepskyblue;
+            color: black;
+            border: none;
+            border-radius: 15px;
+            font-size: large;
+            align-self: center;
+        }
+
+        #reg_btn:hover {
+            /* color: gray; */
+            background-color: rgb(14, 109, 204);
+        }
+    </style>
 </head>
 <body>
+    <div class="header">
+		<h1 class="heading">Placement Management</h1>
+		<a id="username" href="/login"><h3>Cookie.Name</h3> Logout</a>
+    </div>
     
+    <div class="content">
+        <h2 style="margin-left: 20px;">{{data[1]}}</h2>
+        <div class="c_info">Role:<strong> {{data[2]}}</strong></div>
+        <div class="c_info">CTC:<strong> {{data[3]}}</strong></div>
+        <div class="c_info">Minimum CGPA required:<strong> {{data[4]}}</strong></div>
+        <div class="c_info">Maximum Backlogs allowed:<strong> {{data[5]}}</strong></div>
+        <!-- <h3>{{data}}</h3> -->
+        <button id="reg_btn">Register</button>
+    </div>
 </body>
 </html>

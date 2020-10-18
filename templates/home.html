@@ -29,13 +29,13 @@
 			/* padding: 0; */
 		}
 
-		.username {
+		#username {
 			text-decoration: none;
 			color: black;
 			float: right;
 		}
 
-		.username:hover {
+		#username:hover {
 			color: blue;
 		}
 
@@ -76,16 +76,19 @@
 <body>
 	<div class="header">
 		<h1 class="heading">Placement Management</h1>
-		<a class="username" href="/login"><h3>{{data[1]}}</h3> Logout</a>
+		<a id="username" href="/login"><h3>{{data[1]}}</h3> Logout</a>
 	</div>
 	<div class="list">
-		<a href="company/01">
+		{% for c in companies %}
+		<a href="company/{{c[0]}}">
 			<div class="container">
-				<h3 class="c_name">LTI</h3>
-				<h4 class="c_package" >Package: 7lpa</h4>
-				<h4 class="c_role"><strong>Role:</strong>SDE</h4>
+				<h3 class="c_name">{{c[1]}} </h3>
+				<h4 class="c_package" >Package: {{c[3]}} </h4>
+				<h4 class="c_role"><strong>Role:</strong>{{c[2]}} </h4>
+				<!-- <div>{{companies[0]}}</div> -->
 			</div>
 		</a>
+		{% endfor %}
 	</div>
 </body>
 </html>	

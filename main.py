@@ -17,7 +17,10 @@ def m():
 @app.route('/home')
 def home():
     global cred
-    return (render_template('home.html', data = cred))
+    with sqlite3.connect("companyDB.db") as conn:
+        curr = conn.cursor()
+        c_data = curr.execute('SELECT * FROM companies;').fetchall()
+    return (render_template('home.html', data = cred, companies = c_data))
 
 @app.route('/admin_home', methods = ['GET', 'POST'])
 def admin_home():
@@ -52,15 +55,23 @@ def logi():
                 if cred[2] == password:
                     return redirect('/home')
                 else:
-                    flash('Wrong')
+                    # flash('Wrong')
                     return render_template('login.html',)
 
     else:
         return render_template("login.html")
 
+@app.route('/adminlogin', methods = ['GET', 'POST'])
+def adminLogin():
+    return render_template('login_admin.html')
+
+
 @app.route('/company/<int:companyID>')
 def dispCompany(companyID):
-    companyData = None
+    with sqlite3.connect("companyDB.db") as conn:
+        curr = conn.cursor()
+        q = "SELECT * FROM companies where ID=" + str(companyID) + ";"
+        companyData = curr.execute(q).fetchone()
     return render_template('company.html', data = companyData)
 
 if __name__ == '__main__':
