@@ -50,16 +50,16 @@ def logi():
             cred = cur.execute("SELECT * FROM studentDB where usn = :usn", {"usn" : id}).fetchone() 
         
             if cred is None:
-                return render_template('login.html')
+                return render_template('login.html', invalid = False)
             else:
                 if cred[2] == password:
                     return redirect('/home')
                 else:
                     # flash('Wrong')
-                    return render_template('login.html',)
+                    return render_template('login.html', invalid = False)
 
     else:
-        return render_template("login.html")
+        return render_template("login.html", invalid = True)
 
 @app.route('/adminlogin', methods = ['GET', 'POST'])
 def adminLogin():

@@ -4,6 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company name</title>
+    <script>
+        let cook = document.cookie.split(';');
+        window.addEventListener('DOMContentLoaded', ready);
+
+        function ready() {
+            let name = cook.find(row => row.startsWith(' Name'))
+  .split('=')[1];
+            let USER = document.getElementById('nametag');
+            USER.innerText = name;
+        }
+
+        function register(){
+            let CGPA = cook.find(row => row.startsWith(' CGPA'))
+  .split('=')[1];
+            let backs = cook.find(row => row.startsWith(' Backs'))
+  .split('=')[1];
+            if(CGPA < {{data[4]}}) {
+                alert('Your CGPA is below required!');
+            }
+            else if(backs > {{data[5]}}) {
+                alert('You have more then allowed backlogs!');
+            }
+            else {
+                alert('Registration successfull!');
+            }
+
+        }
+    </script>
     <style>
         body {
 			display: flex;
@@ -50,6 +78,11 @@
             margin: 10px 20px;
         }
 
+        .c_info strong {
+            color: rgb(10, 10, 10);
+
+        }
+
         #reg_btn {
             margin-top: 30px;
             margin-left: 35%;
@@ -71,7 +104,7 @@
 <body>
     <div class="header">
 		<h1 class="heading">Placement Management</h1>
-		<a id="username" href="/login"><h3>Cookie.Name</h3> Logout</a>
+		<a id="username" href="/login"><h3 id = "nametag">Cookie.Name</h3> Logout</a>
     </div>
     
     <div class="content">
@@ -81,7 +114,7 @@
         <div class="c_info">Minimum CGPA required:<strong> {{data[4]}}</strong></div>
         <div class="c_info">Maximum Backlogs allowed:<strong> {{data[5]}}</strong></div>
         <!-- <h3>{{data}}</h3> -->
-        <button id="reg_btn">Register</button>
+        <button id="reg_btn" onclick="register()">Register</button>
     </div>
 </body>
 </html>

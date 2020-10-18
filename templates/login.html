@@ -90,7 +90,9 @@
 
       #invalid_msg {
         color: red;
+        {% if (invalid)%}
         display: none;
+        {% endif %}
       }
        
       @media (max-width: 730px){
