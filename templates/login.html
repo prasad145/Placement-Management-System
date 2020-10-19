@@ -58,6 +58,11 @@
         background-color: deepskyblue;
       }
 
+      #dsu_img {
+        width: 60%;
+        height: auto;
+        /* margin-bottom: 0; */
+      }
 
       .student-form {
         margin-left: 20px;
@@ -94,6 +99,19 @@
         display: none;
         {% endif %}
       }
+
+      #login_btn {
+			  background-color: deepskyblue;
+			  color: black;
+			  padding: 10px 20px;
+			  border: none;
+			  border-radius: 20px;
+      }
+
+      #login_btn:hover {
+        background-color: #FE5F00;
+      }
+
        
       @media (max-width: 730px){
         .form-block{
@@ -110,18 +128,19 @@
 
     </style>
   </head>
-
+  
   <body>
     <div class="container-block">
       <div class="title-board">
         <div class="content">
+          <img id="dsu_img" src="https://www.dsu.edu.in/images/sj_univer/demo/1.png" alt="DSU">
           <div class="names">
             <h1>Placement Managment</h1>
             <h2>A project by:</h2>
-            <h3>N</h3>
-            <h3>N</h3>
-            <h3>N</h3>
-            <h3>P</h3>
+            <h3>Nikith Kumar</h3>
+            <h3>Prasad</h3>
+            <h3>Nithin Kumar</h3>
+            <h3>Natesh S</h3>
           </div>
         </div>
       </div>
@@ -133,7 +152,7 @@
           <input id="USN" name="USN" type="text" placeholder="USN" minlength="11" required>
           <input id="PW" name="PW" type="password" placeholder="Password" required>
           <h5 id="invalid_msg">Invalid username or password!</h5>
-          <button type="submit">Log in</button>
+          <button id="login_btn" type="submit">Log in</button>
           <a href="/adminlogin">Log in as admin</a>
         </form>
       </div>

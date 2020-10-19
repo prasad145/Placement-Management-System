@@ -8,9 +8,8 @@
         body {
 			display: flex;
 			flex-direction: column;
-			/* justify-content: center; */
 			align-items: center;
-			/* margin: 0; */
+            background-color: lavenderblush;
 			overflow-x: hidden;
 		}
 
@@ -25,6 +24,7 @@
 
 		.heading {
 			margin: 10px 10px 10px 100px;
+			display: inline-block;
 			justify-self: center;
 		}
 
@@ -35,7 +35,7 @@
 		}
 
 		#username:hover {
-			color: blue;
+			color: #150578;
 		}
 
 
@@ -43,20 +43,38 @@
 			width: 100%;
 			max-width: 700px;
 			flex: 0 0 100%;
+			padding: 0px 10px;
+            background-color: ivory;
 		}
 
         .inp {
             display: block;
-            width: 90%;
+            width: 70%;
             margin-left: 20px;
             border: none;
             border-bottom: 3px solid black;
             font-size: medium;
             background-color: transparent;
             height: 30px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+			color: black;
             /* opacity: 0.2; */
         }
+		
+		#save_btn {
+			font-size: large;
+			background-color: deepskyblue;
+			color: black;
+			padding: 10px 25px;
+			border: none;
+			border-radius: 20px;
+			margin-left: 40%;
+			margin-bottom: 20px;
+		}
+
+		#save_btn:hover {
+			background-color: #FE5F00;
+		}
     </style>
 </head>
 <body>
@@ -72,7 +90,7 @@
             <input class="inp" type="text" name="CTC" placeholder="CTC offered" required>
             <input class="inp" type="text" name="cgpa" placeholder="Minimum CGPA required" required>
             <input class="inp" type="text" name="backs" placeholder="Maximum allowed backlogs" required>
-            <button type="submit">Save</button>
+            <button id="save_btn" type="submit">Save</button>
         </form>
     </div>
 </body>

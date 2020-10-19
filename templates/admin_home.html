@@ -10,6 +10,7 @@
 			flex-direction: column;
 			/* justify-content: center; */
 			align-items: center;
+            background-color: lavenderblush;
 			/* margin: 0; */
 			overflow-x: hidden;
 		}
@@ -25,6 +26,7 @@
 
 		.heading {
 			margin: 10px 10px 10px 100px;
+			display: inline-block;
 			justify-self: center;
 		}
 
@@ -35,7 +37,7 @@
 		}
 
 		#username:hover {
-			color: blue;
+			color: #150578;
 		}
 
 
@@ -49,10 +51,11 @@
 			display: flex;
 			justify-content: center;
 			padding: 30px;
-			background-color:blanchedalmond;
+			background-color: #474647;
+			/* background-color:blanchedalmond; */
 		}
 
-		#new_btn {
+		#new_btn, .remove_btn {
 			font-size: large;
 			background-color: deepskyblue;
 			color: black;
@@ -61,8 +64,12 @@
 			border-radius: 20px;
 		}
 
-		#new_btn:hover {
-			background-color: dodgerblue;
+		#new_btn:hover, .remove_btn:hover {
+			background-color: #FE5F00;
+		}
+
+		.remove_btn {
+			font-size: medium;
 		}
 
 		.line {
@@ -71,10 +78,16 @@
 			margin: 5px 0px;
 		}
 
+		.company_list {
+			padding: 20px 10px;
+            background-color: ivory;
+		}
+
 		.company {
 			display: flex;
 			justify-content: space-between;
 			padding:20px;
+
 		}
 
 		.c_name {
@@ -94,16 +107,18 @@
 			</a>
 		</div>
 		<div class="line"></div>
-		<h3>Currently open for registration:</h3>
-		{% for c in companies %}
-		<div class="company">
-			<h3 class="c_name">{{c[1]}}</h3>
-			<a href="/drop/{{c[0]}}" onclick="return confirm('Are you sure you want to stop registration for {{c[1]}}?')">
-				<button>Remove</button>
-			</a>
+		<div class="company_list">
+			<h3>Currently open for registration:</h3>
+			{% for c in companies %}
+			<div class="company">
+				<h3 class="c_name">{{c[1]}}</h3>
+				<a href="/drop/{{c[0]}}" onclick="return confirm('Are you sure you want to stop registration for {{c[1]}}?')">
+					<button class="remove_btn">Remove</button>
+				</a>
+			</div>
+			<div class="line"></div>
+			{% endfor %}
 		</div>
-		<div class="line"></div>
-		{% endfor %}
 	</div>
 </body>
 </html>

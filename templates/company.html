@@ -36,10 +36,9 @@
         body {
 			display: flex;
 			flex-direction: column;
-			/* justify-content: center; */
 			align-items: center;
-			/* margin: 0; */
 			overflow-x: hidden;
+            background-color: lavenderblush;
 		}
 
 		.header {
@@ -52,6 +51,7 @@
 		}
 
 		.heading {
+			display: inline-block;
 			margin: 10px 10px;
 			/* padding: 0; */
 		}
@@ -63,14 +63,16 @@
 		}
 
 		#username:hover {
-			color: blue;
+			color: #150578;
 		}
 
 
 		.content {
 			width: 100%;
-			max-width: 700px;
+			max-width: 720px;
 			flex: 0 0 100%;
+            padding: 0px 10px;
+            background-color: ivory;
 		}
 
         .c_info {
@@ -97,7 +99,12 @@
 
         #reg_btn:hover {
             /* color: gray; */
-            background-color: rgb(14, 109, 204);
+            background-color: #FE5F00;
+        }
+
+        .li_item {
+            font-size: large;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -114,6 +121,17 @@
         <div class="c_info">Minimum CGPA required:<strong> {{data[4]}}</strong></div>
         <div class="c_info">Maximum Backlogs allowed:<strong> {{data[5]}}</strong></div>
         <!-- <h3>{{data}}</h3> -->
+        <h4>Directions to students:</h4>
+        <ul>
+            <li class="li_item">If any discrepancy is found in the data provided by the student to the
+placement office, Student will not be permitted for any Test/ Interview.</li>
+            <li class="li_item">Once the student is placed in a Company through the Campus / Pool Campus
+Drive/ Off Campus drive, Student can’t participate in any other companies
+unless it is notified by the Placement office as Core Company/ Dream Offer
+etc., </li>
+            <li class="li_item">Students should follow all eligibility criteria & guidelines issued from
+placement office time to time.</li>
+        </ul>
         <button id="reg_btn" onclick="register()">Register</button>
     </div>
 </body>
