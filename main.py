@@ -38,7 +38,7 @@ def logi():
       #  credentials = studentDB.query.get(id)
         with sqlite3.connect("data.db") as con:
             cur = con.cursor()
-            cred = cur.execute("SELECT * FROM studentDB where usn = :usn", {"usn" : id}).fetchone() 
+            cred = cur.execute("SELECT * FROM studentDB where usn = :usn;", {"usn" : id}).fetchone() 
         
             if cred is None:
                 return render_template('login.html', invalid = False)
@@ -77,7 +77,17 @@ def dispCompany(companyID):
 @app.route('/new', methods = ['POST', 'GET'])
 def addnew():
     if request.method == 'POST':
-        pass
+        #pass
+        name = request.form['name']
+        ctc = request.form['CTC']
+        role = request.form['role']
+        cgpa = request.form['cgpa']
+        backs = request.form['backs']
+        with sqlite3.connect("companyDB.db") as conn:
+            curr = conn.cursor()
+            curr.execute("INSERT INTO companies (Name, Role, CCTC, MinCGPA, Backs) values(Name = :company_name, CCTC = :CTC, Role = :offered_role, MinCGPA = :CGPA, Backs = :backs);", {"company_name" : name, "CTC" : ctc, "offered_Role" : role, "CGPA" : cgpa, "backs" : backs})
+            #curr.execute("INSERT INTO companies (Name, Role, CCTC, MinCGPA, Backs) values('LTI', 'SDE', '4lpa' , 6.5, 0);")
+            conn.commit()
     else:
         return render_template('add_new.html')
 
@@ -85,7 +95,7 @@ def addnew():
 def drop(companyID):
     with sqlite3.connect("companyDB.db") as conn:
         curr = conn.cursor()
-        curr.execute("DELETE FROM companies WHERE ID = :del", { "del" : companyID })
+        curr.execute("DELETE FROM companies WHERE ID = :del;", { "del" : companyID })
         conn.commit()
     return redirect('/admin')
 

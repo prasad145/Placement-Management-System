@@ -5,6 +5,7 @@ import sqlite3
 
 loc = "students.xlsx"
 db = sqlite3.connect('data.db')
+
 cur = db.cursor()
 
 xl = xlrd.open_workbook(loc)
@@ -14,12 +15,13 @@ num = s.nrows
 create = " CREATE TABLE IF NOT EXISTS studentDB(USN text PRIMARY KEY, full_name text, first_name TEXT, CGPA FLOAT, backs INT);"
 insert = "INSERT INTO studentDB(USN, full_name, first_name, CGPA, backs) values "
 
-create1 = " CREATE TABLE IF NOT EXISTS companyDB(comp_id int PRIMARY KEY AUTOINCREMENT, company_name text, CTC int, offered_Role TEXT, CGPA FLOAT, backs INT);"
+#create1 = " CREATE TABLE IF NOT EXISTS companies(comp_id int PRIMARY KEY AUTOINCREMENT, company_name text, CTC int, offered_Role TEXT, CGPA FLOAT, backs INT);"
 #insert = "INSERT INTO companyDB(company_name, CTC, offered_Role, CGPA, backs) values "
 
 cur.execute(create)
-cur.execute(create1)
+
 db.commit()
+
 
 for i in range(num):
     data = s.row_values(i)
