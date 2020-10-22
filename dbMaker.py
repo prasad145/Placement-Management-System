@@ -38,7 +38,5 @@ for i in range(num):
         cur.execute(q)
     except:
         print(val)
-
-
     # print(data)
 db.commit()
