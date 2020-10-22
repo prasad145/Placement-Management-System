@@ -20,7 +20,7 @@ def home():
     with sqlite3.connect("companyDB.db") as conn:
         curr = conn.cursor()
         c_data = curr.execute('SELECT * FROM companies;').fetchall()
-    return (render_template('home.html', data = cred, companies = c_data))
+    return (render_template('home.html', data = cred, companies = c_data[::-1]))
 
 @app.route('/admin', methods = ['GET', 'POST'])
 def admin_home():

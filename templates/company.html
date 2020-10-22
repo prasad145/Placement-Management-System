@@ -22,9 +22,15 @@
   .split('=')[1];
             if(CGPA < {{data[4]}}) {
                 alert('Your CGPA is below required!');
+                let regBtn = document.getElementById("reg_btn");
+                regBtn.disabled = true;
+                regBtn.style.background = 'grey';
             }
             else if(backs > {{data[5]}}) {
                 alert('You have more then allowed backlogs!');
+                let regBtn = document.getElementById("reg_btn");
+                regBtn.disabled = true;
+                regBtn.style.background = 'grey';
             }
             else {
                 alert('Registration successfull!');
