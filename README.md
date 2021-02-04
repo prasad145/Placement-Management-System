@@ -11,7 +11,7 @@
 <br>
 <hr>
 <br>
-<h3> Screen Shots </h3>
+<h3> Screen Shots: </h3>
 <img src="https://github.com/prasad145/Placement-Management-System/blob/main/snips/student_login_page.PNG" width="850" height ="500">
 
 <img src="https://github.com/prasad145/Placement-Management-System/blob/main/snips/std_registration_page.PNG" width="850" height ="500">
