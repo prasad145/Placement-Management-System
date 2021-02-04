@@ -9,6 +9,9 @@
 <br>
 <img alt="SQLite" src ="https://img.shields.io/badge/sqlite-%2307405e.svg?&style=for-the-badge&logo=sqlite&logoColor=white"/>
 <br>
+<hr>
+<br>
+<h3> Screen Shots </h3>
 <img src="https://github.com/prasad145/Placement-Management-System/blob/main/snips/student_login_page.PNG" width="850" height ="500">
 
 <img src="https://github.com/prasad145/Placement-Management-System/blob/main/snips/std_registration_page.PNG" width="850" height ="500">
