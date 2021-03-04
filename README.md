@@ -1,4 +1,4 @@
-<h2>Placement-Management-System<h2>
+<h2>Placement-Management-System</h2>
 <div>
  <p>
   A <strong>Placement Management System</strong> is a web platform where admins  can post placement opportunities from companies and students can register for companies that they are interested   in. It involves login using credentials and eligibility verification during registration.
