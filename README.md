@@ -1,3 +1,9 @@
+<h2>Placement-Management-System<h2>
+<div>
+ <p>
+  A <strong>Placement Management System</strong> is a web platform where admins  can post placement opportunities from companies and students can register for companies that they are interested   in. It involves login using credentials and eligibility verification during registration.
+ </p>
+<div>
 <h3> Tools and Frameworks used:<h3>
 <br>
 <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/><img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
